@@ -49,6 +49,7 @@ namespace SportsStore.WebUI.Controllers
 
         public ViewResult Checkout() => View(new ShippingDetails());
 
+        [HttpPost]
         public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
         {
             if (cart.Lines.Count() == 0)
