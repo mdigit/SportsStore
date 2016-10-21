@@ -14,14 +14,15 @@ namespace SportsStore.WebUI.Controllers
             Repository = repository;
         }
 
-        public PartialViewResult Menu(string category = null)
+        public PartialViewResult Menu(string category = null, bool horizontalLayout = false)
         {
             ViewBag.SelectedCategory = category;
             var categories = Repository.Products
                 .Select(x => x.Catagory)
                 .Distinct()
                 .OrderBy(x => x);
-            return PartialView(categories);
+            var viewName = horizontalLayout ? "MenuHorizontal" : "Menu";
+            return PartialView(viewName, categories);
         }
     }
 }
