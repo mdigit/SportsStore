@@ -1,7 +1,6 @@
-﻿using System.Web.Mvc;
-using SportsStore.Domain.Abstract;
+﻿using SportsStore.Domain.Abstract;
 using System.Linq;
-using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SportsStore.WebUI.Controllers
 {
@@ -14,14 +13,15 @@ namespace SportsStore.WebUI.Controllers
             Repository = repository;
         }
 
-        public PartialViewResult Menu(string category = null)
+        public PartialViewResult Menu(string category = null, bool horizontalLayout = false)
         {
             ViewBag.SelectedCategory = category;
             var categories = Repository.Products
                 .Select(x => x.Catagory)
                 .Distinct()
                 .OrderBy(x => x);
-            return PartialView(categories);
+
+            return PartialView("FlexMenu", categories);
         }
     }
 }
