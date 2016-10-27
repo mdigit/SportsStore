@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[Products]
+﻿use SportsStore
+go
+
+CREATE TABLE [dbo].[Products]
 (
 	[ProductID] INT NOT NULL PRIMARY KEY IDENTITY,
 	[Name] NVARCHAR(100) NOT NULL,
